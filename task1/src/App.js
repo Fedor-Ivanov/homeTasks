@@ -83,9 +83,11 @@ export default class App extends Component {
 	render() {
 		return (
 
-			<div>
-				<TableHeader contactsList = {this.state.contacts} />
-				<TableBody contactsList = {this.state.contacts} />
+			<div className="container">
+				<div>
+					<TableHeader contactsList = {this.state.contacts} />
+					<TableBody contactsList = {this.state.contacts} />
+				</div>
 			</div>
 
 		)
