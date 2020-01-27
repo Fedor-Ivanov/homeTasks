@@ -78,14 +78,64 @@ export default class Contacts extends Component {
 				"phone": "024-648-3804",
 			}
 		],
+		newContact: {
+			"name": '',
+			"surname": ''
+		}
 
+	}
+
+	deleteContact = (id) => {
+		const newContacts = this.state.contacts.filter((item) => {
+			return item.id !== id;
+		})
+
+		this.setState({
+			contacts: newContacts
+		})
+	}
+
+	onFormChange = changes => {
+		this.setState({
+			newContact: {
+				...this.state.newContact,
+				...changes
+			}
+		})
+	}
+
+	onFormSubmit = newContact => {
+		if( newContact.name || newContact.surname ) {
+			this.setState({
+				contacts: [
+					...this.state.contacts,
+					{
+						id: Date.now(),
+						...newContact
+					}
+				],
+				newContact: {
+					name: '',
+					surname: ''
+				}
+			})
+		} else {
+			alert('not valid');
+		}
 	}
 
 	render() {
 		return (
 			<div className="contacts__grid">
-				<ContactsList contactsList={this.state.contacts} />
-				<ContactsForm />
+				<ContactsList
+					contactsList={this.state.contacts}
+					onDelete={this.deleteContact}
+				/>
+				<ContactsForm
+					contact={this.state.newContact}
+					onFormChange={this.onFormChange}
+					onFormSubmit={this.onFormSubmit}
+				/>
 			</div>
 		)
 	}
