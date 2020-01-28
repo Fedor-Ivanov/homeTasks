@@ -4,15 +4,15 @@ import ContactsListItem from '../ContactsListItem/ContactsListItem'
 export default class ContactsList extends Component {
 	render() {
 
-		const {onDelete} = this.props;
+		const {onDelete, resetForm, getContactItemData} = this.props;
 
 		return (
 			<div>
 			<ul className="contactsList__list">
 				{this.props.contactsList.map((item) => 
-				<ContactsListItem key={item.id} item={item} onDelete={onDelete} />)}
+				<ContactsListItem key={item.id} item={item} onDelete={onDelete} getContactItemData={getContactItemData} />)}
 			</ul>
-			<button>new</button>
+			<button onClick={resetForm}>new</button>
 			</div>
 		)
 	}
