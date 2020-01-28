@@ -1,5 +1,28 @@
 .contactsListItem {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 0.3fr;
     grid-column-gap: 10px;
+    padding: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.contactsListItem:hover{
+    transform: scale(1.1);
+}
+
+.contactsListItem button{
+    background-color: #dedada;
+    color: #000;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 3px;
+}
+
+.contactsListItem button:hover {
+    background-color: #c15050;
+    color: #fff;
+
 }

@@ -111,28 +111,25 @@ export default class Contacts extends Component {
 		})
 
 		if( newContact.name || newContact.surname ) {
-		
-			console.log("before " + contactIds);
-			console.log("before " + newContact.id);
 
 			if( contactIds.includes(newContact.id) ) {
 
+				const editedContact = this.state.contacts.map(item => {
+					if (item.id == newContact.id) {
+						item.id = newContact.id;
+						item.name = newContact.name;
+						item.surname = newContact.surname;
+					}
+					return item;
+				})
+
 				this.setState({
-					contacts: [
-						this.state.contacts[(newContact.id -1)] = {
-							id: newContact.id,
-							name: newContact.name,
-							surname: newContact.surname
-						},
-						...this.state.contacts,
-					],
+					contacts: editedContact,
 					newContact: {
 						name: '',
 						surname: ''
 					}
 				})
-
-				console.log(this.state.contacts);
 
 			} else {
 
@@ -169,25 +166,26 @@ export default class Contacts extends Component {
 	}
 
 	getContactItemData = (item) => {
-
 		this.onFormChange(item);
-
 	}
 
 	render() {
 		return (
-			<div className="contacts__grid">
-				<ContactsList
-					contactsList={this.state.contacts}
-					onDelete={this.deleteContact}
-					resetForm={this.resetForm}
-					getContactItemData={this.getContactItemData}
-				/>
-				<ContactsForm
-					contact={this.state.newContact}
-					onFormChange={this.onFormChange}
-					onFormSubmit={this.onFormSubmit}
-				/>
+			<div className="contacts__wrap">
+				<div className="contacts__title">Contacts</div>
+				<div className="contacts__grid">
+					<ContactsList
+						contactsList={this.state.contacts}
+						onDelete={this.deleteContact}
+						resetForm={this.resetForm}
+						getContactItemData={this.getContactItemData}
+					/>
+					<ContactsForm
+						contact={this.state.newContact}
+						onFormChange={this.onFormChange}
+						onFormSubmit={this.onFormSubmit}
+					/>
+				</div>
 			</div>
 		)
 	}

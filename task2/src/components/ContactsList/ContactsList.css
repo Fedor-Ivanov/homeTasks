@@ -1,0 +1,18 @@
+.contactsList__list {
+    display: grid;
+    grid-row-gap: 20px;
+}
+
+.contactsList__button {
+    background-color: rgb(47, 63, 201);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.contactsList__button:hover {
+    transform: scale(1.1);
+}

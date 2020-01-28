@@ -3,7 +3,6 @@ import './ContactsForm.css'
 
 export default class ContactsForm extends Component {
 
-
 	onInputChange = (e) => {
 		this.props.onFormChange({
 			[e.target.name]: e.target.value,
@@ -19,9 +18,9 @@ export default class ContactsForm extends Component {
 	render() {
 		return (
 			<form className="contactsForm" onSubmit={this.onFormSubmit}>
-				<input onChange={this.onInputChange} value={this.props.contact.name} type="text" name="name"></input>
-				<input onChange={this.onInputChange} value={this.props.contact.surname} type="text" name="surname"></input>
-				<button>save</button>
+				<input onChange={this.onInputChange} placeholder="name" value={this.props.contact.name} type="text" name="name"></input>
+				<input onChange={this.onInputChange} placeholder="surname" value={this.props.contact.surname} type="text" name="surname"></input>
+				<button className="contactsForm__button">save</button>
 			</form>
 		)
 	}

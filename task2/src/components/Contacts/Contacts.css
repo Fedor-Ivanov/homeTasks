@@ -1,5 +1,23 @@
 .contacts__grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-column-gap: 100px;
+    margin: 20px 15% 0;
+}
+
+.contacts__title {
+    padding: 10px;
+    color: #2193b0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.contacts__wrap {
+    width: 100%;
+}
+
+body {
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
 }

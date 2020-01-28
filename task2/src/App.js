@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Contacts from './components/Contacts/Contacts'
 import './App.css'
+import './normalize.css'
 
 
 export default class App extends Component {
@@ -12,4 +13,3 @@ export default class App extends Component {
 		)
 	}
 }
-

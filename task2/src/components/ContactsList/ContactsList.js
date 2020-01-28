@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ContactsListItem from '../ContactsListItem/ContactsListItem'
+import './ContactsList.css'
 
 export default class ContactsList extends Component {
 	render() {
@@ -12,7 +13,7 @@ export default class ContactsList extends Component {
 				{this.props.contactsList.map((item) => 
 				<ContactsListItem key={item.id} item={item} onDelete={onDelete} getContactItemData={getContactItemData} />)}
 			</ul>
-			<button onClick={resetForm}>new</button>
+			<button className="contactsList__button" onClick={resetForm}>new</button>
 			</div>
 		)
 	}
