@@ -115,7 +115,7 @@ export default class Contacts extends Component {
 			if( contactIds.includes(newContact.id) ) {
 
 				const editedContact = this.state.contacts.map(item => {
-					if (item.id == newContact.id) {
+					if (item.id === newContact.id) {
 						item.id = newContact.id;
 						item.name = newContact.name;
 						item.surname = newContact.surname;
@@ -150,7 +150,7 @@ export default class Contacts extends Component {
 			}
 
 		} else {
-			alert('not valid');
+			alert("Заполните, как минимум, одно поле")
 		}
 		
 	}

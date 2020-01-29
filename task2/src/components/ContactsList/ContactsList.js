@@ -9,11 +9,11 @@ export default class ContactsList extends Component {
 
 		return (
 			<div>
-			<ul className="contactsList__list">
-				{this.props.contactsList.map((item) => 
-				<ContactsListItem key={item.id} item={item} onDelete={onDelete} getContactItemData={getContactItemData} />)}
-			</ul>
-			<button className="contactsList__button" onClick={resetForm}>new</button>
+				<ul className="contactsList__list">
+					{this.props.contactsList.map((item) => 
+					<ContactsListItem key={item.id} item={item} onDelete={onDelete} getContactItemData={getContactItemData} />)}
+				</ul>
+				<button className="contactsList__button" onClick={resetForm}>add</button>
 			</div>
 		)
 	}
