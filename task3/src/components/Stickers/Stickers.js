@@ -32,23 +32,51 @@ function Stickers() {
 	}
 
 	const deleteSticker = (id) => {
-		const newSticker = stickers.filter((item) => {
+		const newStickers = stickers.filter((item) => {
 			return item.id !== id;
 		})
-		setStickers(newSticker)
+		setStickers(newStickers)
 	}
 
-	// огромная проблема с этой функцией, не могу понять как привязать value полученое из textarea к соответствующему элементу из 'stickers'
-	const onStickerValueChange = (data) => {
+	// огромная проблема с этой функцией, не могу понять как привязать value полученое из textarea к соответствующему элементу из 'stickers' и все это перезаписать в тот же 'stickers'
+	const onStickerValueChange = (item) => {
 
-		const stickersData = stickers.map((item) => {
-			item.text = data;
-			return item;
+		const stickersIds = stickers.map((elem) => {
+			return elem.id;
 		})
+
+		console.log(stickersIds)
+
+		if( stickersIds.includes(item.id) ) {
+
+			console.log(item);
+
+			const editedStickers = stickers.map(element => {
+				if (element.id === item.id) {
+					element.id = item.id;
+					element.text = item.value;
+					// element.x = item.x;
+					// element.y = item.y;
+				}
+				return item;
+			})
+
+			setStickers(editedStickers)
+
+		}
+
+		// if (item.id === stickers.id) {
+		// 	console.log(item.id)
+		// }
+
+		// const stickersData = stickers.map((item) => {
+		// 	item.text = data;
+		// 	return item;
+		// })
 		
-		setStickers([
-			...stickers,
-		])
+		// setStickers([
+		// 	...stickers,
+		// ])
 	}
 
 	return (

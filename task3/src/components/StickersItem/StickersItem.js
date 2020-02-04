@@ -24,8 +24,8 @@ export default function StickersItem(props) {
 		props.deleteSticker(props.sticker.id)
 	}
 
-	const onTextAreaChange = (e) => {
-		props.onStickerValueChange(e.target.value)
+	const onTextAreaChange = () => {
+		props.onStickerValueChange(props.sticker)
 	}
 
 	return (
