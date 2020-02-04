@@ -28,10 +28,6 @@ export default function StickersItem(props) {
 		props.onStickerValueChange(e.target.value, props.sticker.id)
 	}
 
-	// props.setStickers([
-	// 	textareaRef.current.offsetLeft
-	// ])
-
 	useEffect(() => {
 		console.log("x: " + textareaRef.current.offsetLeft);
 		console.log("y: " + textareaRef.current.offsetTop);
@@ -40,7 +36,7 @@ export default function StickersItem(props) {
 
 	return (
 		<span style={StickersItemStyle}
-				ref={textareaRef}
+			ref={textareaRef}
 		>
 			<button
 				style={StickersItemButtonStyle}
@@ -49,13 +45,11 @@ export default function StickersItem(props) {
 				delete
 			</button>
 			<textarea
-				
 				style={StickersItemTextAreaStyle}
-				placeholder={props.sticker.id}
+				placeholder='type some note'
 				onChange={onTextAreaChange}
-				// onScroll={props.getStickerX(textareaRef.current.offsetLeft)}
+				value={props.sticker.text}
 			>
-				
 			</textarea>
 		</span>
 	)
