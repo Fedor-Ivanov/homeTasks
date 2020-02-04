@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import StickersField from '../StickersField/StickersField'
+import React, { useEffect, useState } from 'react';
+import StickersField from '../StickersField/StickersField';
 
 
 function Stickers() {
@@ -18,38 +18,17 @@ function Stickers() {
 
 				id: Date.now(), // при создании сразу указываем для элемента id
 				text: '', // тут будет значение из textarea, по умолчанию она пустое, пока пользователь его не заполнит
-				x: getStickerX, // тут должно быть значение x при отрисовке элемента
-				y: '' // тут должно быть значение y при отрисовке элемента
-			
+				// x: '', // тут должно быть значение x при отрисовке элемента
+				// y: '' // тут должно быть значение y при отрисовке элемента
 			}
 		])
-
-		console.log('create elem');
-		
 	}
 
-	const getStickerX = (value) => {
-
-		console.log(value);
-
-		return value;
-	}
-
-	// useEffect(() => {
-
-
-
-	// 	console.log(stickersXPosition);
-
-
-	// }, [createSticker])
 
 	// просто тестовая функия чтобы было удобно просмотреть состояние "stickers"
 	const check = () => {
 		console.log(stickers)
 	}
-
-	
 
 
 	const deleteSticker = (id) => {
@@ -59,12 +38,19 @@ function Stickers() {
 		setStickers(newStickers)
 	}
 
-	const stickersIds = stickers.map((elem) => {
-		return elem.id;
-	})
+
+	
+
 
 	const onStickerValueChange = (data, id) => {
 			const editedStickers = stickers.map(element => {
+
+
+				const stickersIds = stickers.map((elem) => {
+					return elem.id;
+				})
+
+
 				if( stickersIds.includes(id) ) {
 					if (element.id === id) {
 						element.text = data;
@@ -74,6 +60,23 @@ function Stickers() {
 			})
 		setStickers(editedStickers)
 	}
+	
+
+	useEffect(() => {
+
+		localStorage.setItem("stickersStorage", stickers);
+
+	}, [stickers])
+
+	const loadLocalStickers = () => {
+		const load = localStorage.getItem("stickersStorage")
+
+		setStickers([load]);
+	}
+
+	useEffect(() => {
+		loadLocalStickers()
+	}, [])
 
 	return (
 		<div>
@@ -83,7 +86,6 @@ function Stickers() {
 				stickers={stickers}
 				deleteSticker={deleteSticker}
 				onStickerValueChange={onStickerValueChange}
-				// getStickerX={getStickerX}
 			/>
 		</div>
 	)

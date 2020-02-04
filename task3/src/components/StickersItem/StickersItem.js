@@ -4,7 +4,7 @@ export default function StickersItem(props) {
 
 	const StickersItemStyle = {
 		display: "inline-block",
-		margin: "0px 20px 10px"
+		margin: "10px 20px 10px"
 	}
 	
 	const StickersItemButtonStyle = {
