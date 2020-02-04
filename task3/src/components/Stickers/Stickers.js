@@ -18,18 +18,39 @@ function Stickers() {
 
 				id: Date.now(), // при создании сразу указываем для элемента id
 				text: '', // тут будет значение из textarea, по умолчанию она пустое, пока пользователь его не заполнит
-				x: '', // тут должно быть значение x при отрисовке элемента
+				x: getStickerX, // тут должно быть значение x при отрисовке элемента
 				y: '' // тут должно быть значение y при отрисовке элемента
 			
 			}
 		])
+
+		console.log('create elem');
+		
 	}
 
+	const getStickerX = (value) => {
+
+		console.log(value);
+
+		return value;
+	}
+
+	// useEffect(() => {
+
+
+
+	// 	console.log(stickersXPosition);
+
+
+	// }, [createSticker])
 
 	// просто тестовая функия чтобы было удобно просмотреть состояние "stickers"
 	const check = () => {
 		console.log(stickers)
 	}
+
+	
+
 
 	const deleteSticker = (id) => {
 		const newStickers = stickers.filter((item) => {
@@ -38,45 +59,20 @@ function Stickers() {
 		setStickers(newStickers)
 	}
 
-	// огромная проблема с этой функцией, не могу понять как привязать value полученое из textarea к соответствующему элементу из 'stickers' и все это перезаписать в тот же 'stickers'
-	const onStickerValueChange = (item) => {
+	const stickersIds = stickers.map((elem) => {
+		return elem.id;
+	})
 
-		const stickersIds = stickers.map((elem) => {
-			return elem.id;
-		})
-
-		console.log(stickersIds)
-
-		if( stickersIds.includes(item.id) ) {
-
-			console.log(item);
-
+	const onStickerValueChange = (data, id) => {
 			const editedStickers = stickers.map(element => {
-				if (element.id === item.id) {
-					element.id = item.id;
-					element.text = item.value;
-					// element.x = item.x;
-					// element.y = item.y;
+				if( stickersIds.includes(id) ) {
+					if (element.id === id) {
+						element.text = data;
+					}
+				return element;
 				}
-				return item;
 			})
-
-			setStickers(editedStickers)
-
-		}
-
-		// if (item.id === stickers.id) {
-		// 	console.log(item.id)
-		// }
-
-		// const stickersData = stickers.map((item) => {
-		// 	item.text = data;
-		// 	return item;
-		// })
-		
-		// setStickers([
-		// 	...stickers,
-		// ])
+		setStickers(editedStickers)
 	}
 
 	return (
@@ -87,6 +83,7 @@ function Stickers() {
 				stickers={stickers}
 				deleteSticker={deleteSticker}
 				onStickerValueChange={onStickerValueChange}
+				// getStickerX={getStickerX}
 			/>
 		</div>
 	)

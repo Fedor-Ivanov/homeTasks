@@ -1,10 +1,8 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export default function StickersItem(props) {
 
 	const StickersItemStyle = {
-		width: "200px",
-		height: "200px",
 		display: "inline-block",
 		margin: "0px 20px 10px"
 	}
@@ -19,17 +17,31 @@ export default function StickersItem(props) {
 		height: "auto",
 	}
 
+	const textareaRef = useRef()
+
 	const onDeleteButtonClick = (e) => {
 		e.stopPropagation();
 		props.deleteSticker(props.sticker.id)
 	}
 
-	const onTextAreaChange = () => {
-		props.onStickerValueChange(props.sticker)
+	const onTextAreaChange = (e) => {
+		props.onStickerValueChange(e.target.value, props.sticker.id)
 	}
 
+	// props.setStickers([
+	// 	textareaRef.current.offsetLeft
+	// ])
+
+	useEffect(() => {
+		console.log("x: " + textareaRef.current.offsetLeft);
+		console.log("y: " + textareaRef.current.offsetTop);
+	}, [props.sticker])
+
+
 	return (
-		<span style={StickersItemStyle}>
+		<span style={StickersItemStyle}
+				ref={textareaRef}
+		>
 			<button
 				style={StickersItemButtonStyle}
 				onClick={onDeleteButtonClick}
@@ -37,13 +49,16 @@ export default function StickersItem(props) {
 				delete
 			</button>
 			<textarea
+				
 				style={StickersItemTextAreaStyle}
 				placeholder={props.sticker.id}
 				onChange={onTextAreaChange}
+				// onScroll={props.getStickerX(textareaRef.current.offsetLeft)}
 			>
 				
 			</textarea>
 		</span>
 	)
 }
+
 

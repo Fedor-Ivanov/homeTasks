@@ -1,7 +1,7 @@
 import React from 'react'
 import StickersItem from '../StickersItem/StickersItem';
 
-export default function StickersField({stickers, deleteSticker, onStickerValueChange}) {
+export default function StickersField({stickers, deleteSticker, onStickerValueChange, getStickerX}) {
 
 	const StickersFieldStyle = {
 		backgroundColor: "#666",
@@ -17,7 +17,8 @@ export default function StickersField({stickers, deleteSticker, onStickerValueCh
 					sticker={item}
 					key={item.id}
 					deleteSticker={deleteSticker}
-					onStickerValueChange={onStickerValueChange}	
+					onStickerValueChange={onStickerValueChange}
+					getStickerX={getStickerX}
 				/>
 			)}
 			
