@@ -1,21 +1,8 @@
 import React, { useEffect, useRef } from 'react'
+import './StickersItem.css'
+
 
 export default function StickersItem(props) {
-
-	const StickersItemStyle = {
-		display: "inline-block",
-		margin: "10px 20px 10px"
-	}
-	
-	const StickersItemButtonStyle = {
-		marginLeft: "auto",
-		display: "block"
-	}
-	
-	const StickersItemTextAreaStyle = {
-		width: "auto",
-		height: "auto",
-	}
 
 	const textareaRef = useRef()
 
@@ -35,17 +22,17 @@ export default function StickersItem(props) {
 
 
 	return (
-		<span style={StickersItemStyle}
+		<span className="stickers__item"
 			ref={textareaRef}
 		>
 			<button
-				style={StickersItemButtonStyle}
+				className="stickers__button"
 				onClick={onDeleteButtonClick}
 			>
-				delete
+				
 			</button>
 			<textarea
-				style={StickersItemTextAreaStyle}
+				className="stickers__textarea"
 				placeholder='type some note'
 				onChange={onTextAreaChange}
 				value={props.sticker.text}

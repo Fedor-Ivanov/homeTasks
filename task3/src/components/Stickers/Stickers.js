@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StickersField from '../StickersField/StickersField';
+import './Stickers.css'
 
 
 function Stickers() {

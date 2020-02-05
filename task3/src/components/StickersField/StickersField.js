@@ -1,17 +1,11 @@
 import React from 'react'
 import StickersItem from '../StickersItem/StickersItem';
+import './StickersField.css'
 
 export default function StickersField({stickers, deleteSticker, onStickerValueChange, stickersText}) {
 
-	const StickersFieldStyle = {
-		backgroundColor: "#666",
-		width: "100%",
-		overflowY: "auto",
-		height: "300px",
-	}
-
 	return (
-		<div style={StickersFieldStyle}>
+		<div className="stickers__field">
 
 			{stickers.map((item) => 
 				<StickersItem

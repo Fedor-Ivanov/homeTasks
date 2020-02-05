@@ -1,0 +1,74 @@
+.stickers__item {
+	display: inline-grid;
+	margin: 20px;
+	animation: creating 0.25s ease forwards;
+	box-shadow: 12px 28px 9px -18px rgba(84,84,84,1);
+	background-color: transparent;
+	border-radius: 5px 0px 5px 5px;
+}
+
+@keyframes creating {
+	0% {
+		transform: scale(0);
+	};
+
+	100% {
+		transform: scale(1);
+	};
+}
+
+.stickers__button {
+	margin-left: auto;
+	display: block;
+	border: none;
+	background-color: #1ab7e9;
+	height: 30px;
+	width: 50px;
+	font-weight: bold;
+	position: relative;
+	cursor: pointer;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.stickers__button::before {
+	content: "";
+	position: absolute;
+	width: 6px;
+	height: 20px;
+	top: calc(50% - 10px);
+	left: calc(50% - 3px);
+	transform: rotate(45deg);
+	background-color: #e1e1e1;
+	transition: 0.3s;
+}
+
+.stickers__button::after {
+	content: "";
+	position: absolute;
+	width: 6px;
+	height: 20px;
+	top: calc(50% - 10px);
+	left: calc(50% - 3px);
+	transform: rotate(-45deg);
+	background-color: #e1e1e1;
+	transition: 0.3s;
+}
+
+.stickers__button:hover::after, .stickers__button:hover::before {
+	background-color: orange;
+}
+
+.stickers__textarea {
+	width: auto;
+	height: auto;
+	border: none;
+	color: #fff;
+	font-size: 24px;
+	background: linear-gradient(25deg, #88d5f3, #1ab7e9);
+	border-radius: 5px 0px 5px 5px;
+	padding: 5px;
+}
+
+.stickers__textarea::placeholder {
+	color: #fff;
+}
