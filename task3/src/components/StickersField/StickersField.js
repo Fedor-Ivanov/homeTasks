@@ -6,6 +6,7 @@ export default function StickersField({stickers, deleteSticker, onStickerValueCh
 	const StickersFieldStyle = {
 		backgroundColor: "#666",
 		width: "100%",
+		overflowY: "auto",
 		height: "300px",
 	}
 

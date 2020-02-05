@@ -6,7 +6,7 @@ function Stickers() {
 
 
 	const [stickers, setStickers] = useState(
-		JSON.parse(localStorage.getItem('stickersStorage')) || []
+		JSON.parse(localStorage.getItem('stickersStorage')) ? JSON.parse(localStorage.getItem('stickersStorage')) : []
 	);
 
 
