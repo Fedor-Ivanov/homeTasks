@@ -18,38 +18,43 @@ export default function StickersItem(props) {
 		
 	}
 
-	const qwwwww = (e) => {
-		props.onStickerSizeChange(e.target.offsetWidth, e.target.offsetHeight)
+	const getStickerSize = (e) => {
+		if(e.target.offsetWidth || e.targetoffsetHeight ) {
+			props.onStickerSizeChange(e.target, props.sticker.id)
+		}
+		
 	}
 
-	useEffect(() => {
-		console.log("x: " + textareaRef.current.offsetLeft);
-		console.log("y: " + textareaRef.current.offsetTop);
-		console.log("width: " + textareaRef.current.offsetWidth);
-		console.log("height: " + textareaRef.current.offsetHeight);
-	}, [props.sticker])
+
+	// useEffect(() => {
+	// 	console.log("x: " + textareaRef.current.offsetLeft);
+	// 	console.log("y: " + textareaRef.current.offsetTop);
+	// 	console.log("width: " + textareaRef.current.offsetWidth);
+	// 	console.log("height: " + textareaRef.current.offsetHeight);
+	// }, [props.sticker])
 
 
 	return (
 		<CSSTransition in={true} enter={true} exit={true} appear={true} timeout={{ enter: 500,exit: 1500 }} classNames="example" >
 		<span className="stickers__item"
-			
+			draggable="true"
 			ref={textareaRef}
 		>
-			
-			<button
+			<div className="stickers__button_wrap">
+				<button
 				className="stickers__button"
 				onClick={onDeleteButtonClick}
-			>
-				
-			</button>
+				>
+				</button>
+			</div>
+			
 			<textarea
 				className="stickers__textarea"
 				placeholder='type some note'
 				onChange={onTextAreaChange}
 				value={props.sticker.text}
 				style={{width: props.sticker.w, height: props.sticker.h}}
-				onFocus={qwwwww}
+				onMouseUp={getStickerSize}
 			>
 			</textarea>
 		</span>

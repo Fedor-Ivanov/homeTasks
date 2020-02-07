@@ -1,5 +1,6 @@
 import React from 'react'
 import Stickers from './components/Stickers/Stickers'
+import './normalize.css'
 
 
 export default function App() {

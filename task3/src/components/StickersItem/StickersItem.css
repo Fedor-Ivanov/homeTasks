@@ -34,17 +34,24 @@
   transition: opacity 0.5s ease-in;
 }
 
+.stickers__button_wrap {
+	background-color: #1ab7e9;
+	border-radius: 5px 5px 0px 0px;
+}
+
 .stickers__button {
 	margin-left: auto;
 	display: block;
 	border: none;
 	background-color: #1ab7e9;
 	height: 30px;
-	width: 50px;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
 	font-weight: bold;
 	position: relative;
 	cursor: pointer;
-	border-radius: 5px 5px 0px 0px;
+	
 }
 
 .stickers__button::before {
@@ -81,8 +88,8 @@
 	border: none;
 	color: #fff;
 	font-size: 24px;
-	background: linear-gradient(25deg, #88d5f3, #1ab7e9);
-	border-radius: 5px 0px 5px 5px;
+	background: linear-gradient(to top, #88d5f3, #1ab7e9);
+	border-radius: 0px 0px 5px 5px;
 	padding: 5px;
 }
 

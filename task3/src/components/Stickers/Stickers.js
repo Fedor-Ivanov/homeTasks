@@ -17,15 +17,10 @@ function Stickers() {
 			{
 				id: Date.now(),
 				text: '',
-				// x: '', // тут должно быть значение x при отрисовке элемента
-				// y: '' // тут должно быть значение y при отрисовке элемента
+				x: 0, // тут должно быть значение x при отрисовке элемента
+				y: 0 // тут должно быть значение y при отрисовке элемента
 			}
 		])
-	}
-
-
-	const check = () => {
-		console.log(stickers)
 	}
 
 
@@ -44,7 +39,7 @@ function Stickers() {
 
 	const onStickerValueChange = (data, id) => {
 
-		const editedStickers = stickers.map(element => {	
+		const editedStickers = stickers.map(element => {
 			if( stickersIds.includes(id) ) {
 				if (element.id === id) {
 					element.text = data;
@@ -55,15 +50,17 @@ function Stickers() {
 		setStickers([...stickers],{...editedStickers})
 	}
 
-	const onStickerSizeChange = (width, height) => {
+	const onStickerSizeChange = (item, id) => {
 
-		const changedSizeStickers = stickers.map(element => {
-			element.w = width;
-			element.h = height;
-
+		const changedSizeStickers = stickers.map(element => {	
+			if( stickersIds.includes(id) ) {
+				if (element.id === id) {
+					element.w = item.style.width;
+					element.h = item.style.height;
+				}
 			return element;
+			}
 		})
-
 		setStickers([...stickers],{...changedSizeStickers})
 
 	}
@@ -76,7 +73,6 @@ function Stickers() {
 
 	return (
 		<div>
-			<button onClick={check}>check sticker</button>
 			<button onClick={createSticker}>add sticker</button>
 			<StickersField
 				stickers={stickers}
