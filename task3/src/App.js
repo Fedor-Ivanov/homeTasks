@@ -12,6 +12,6 @@ export default function App() {
 }
 
 const AppStyle = {
-	backgroundColor: '#666',
+	backgroundColor: 'rgb(43,43,43)',
 	height: '100vh'
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
 
 import './StickersItem.css'
@@ -24,15 +24,6 @@ export default function StickersItem(props) {
 		}
 		
 	}
-
-
-	// useEffect(() => {
-	// 	console.log("x: " + textareaRef.current.offsetLeft);
-	// 	console.log("y: " + textareaRef.current.offsetTop);
-	// 	console.log("width: " + textareaRef.current.offsetWidth);
-	// 	console.log("height: " + textareaRef.current.offsetHeight);
-	// }, [props.sticker])
-
 
 	return (
 		<CSSTransition in={true} enter={true} exit={true} appear={true} timeout={{ enter: 500,exit: 1500 }} classNames="example" >

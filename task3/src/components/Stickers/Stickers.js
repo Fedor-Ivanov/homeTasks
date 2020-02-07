@@ -17,12 +17,9 @@ function Stickers() {
 			{
 				id: Date.now(),
 				text: '',
-				x: 0, // тут должно быть значение x при отрисовке элемента
-				y: 0 // тут должно быть значение y при отрисовке элемента
 			}
 		])
 	}
-
 
 	const deleteSticker = (id) => {
 		const newStickers = stickers.filter((item) => {
@@ -73,7 +70,9 @@ function Stickers() {
 
 	return (
 		<div>
-			<button onClick={createSticker}>add sticker</button>
+			<div className="stickers__button-wrap">
+				<button className="stickers__button_create" onClick={createSticker}></button>
+			</div>
 			<StickersField
 				stickers={stickers}
 				deleteSticker={deleteSticker}
