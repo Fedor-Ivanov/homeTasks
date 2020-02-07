@@ -2,7 +2,7 @@ import React from 'react'
 import StickersItem from '../StickersItem/StickersItem';
 import './StickersField.css'
 
-export default function StickersField({stickers, deleteSticker, onStickerValueChange, onStickerSizeChange}) {
+export default function StickersField({ stickers, deleteSticker, onStickerValueChange, onStickerSizeChange }) {
 
 	return (
 		<div className="stickers__field">

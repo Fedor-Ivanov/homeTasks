@@ -10,13 +10,14 @@ function Stickers() {
 		JSON.parse(localStorage.getItem('stickersStorage')) ? JSON.parse(localStorage.getItem('stickersStorage')) : []
 	);
 
-
 	const createSticker = () => {
 		setStickers([
 			...stickers,
 			{
 				id: Date.now(),
 				text: '',
+				x: 50,
+				y: 50
 			}
 		])
 	}
@@ -61,12 +62,31 @@ function Stickers() {
 		setStickers([...stickers],{...changedSizeStickers})
 
 	}
+
 	
+	// useEffect(() => {
+	// 	function draggingSticker(e) {
+			
+	// 		setStickers(
+	// 			[...stickers],
+	// 			{
+	// 				x: e.x,
+	// 				y: e.y
+	// 			}
+	// 		)
+	// 	}
+
+	// 	document.addEventListener('dragover', draggingSticker);
+
+	// 	return () => {
+	// 		document.removeEventListener('dragover', draggingSticker);
+	// 	}
+
+	// },[]);
 
 	useEffect(() => {
 		localStorage.setItem("stickersStorage", JSON.stringify(stickers));
 	}, [stickers])
-
 
 	return (
 		<div>

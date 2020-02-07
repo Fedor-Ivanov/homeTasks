@@ -25,17 +25,22 @@ export default function StickersItem(props) {
 		
 	}
 
+
 	return (
 		<CSSTransition in={true} enter={true} exit={true} appear={true} timeout={{ enter: 500,exit: 1500 }} classNames="example" >
 		<span className="stickers__item"
 			draggable="true"
 			ref={textareaRef}
-		>
+			// style={{
+			// 	position: "absolute",
+			// 	top: props.sticker.y,
+			// 	left: props.sticker.x
+			// }}
+			>
 			<div className="stickers__button_wrap">
 				<button
 				className="stickers__button"
-				onClick={onDeleteButtonClick}
-				>
+				onClick={onDeleteButtonClick}>
 				</button>
 			</div>
 			
@@ -45,12 +50,9 @@ export default function StickersItem(props) {
 				onChange={onTextAreaChange}
 				value={props.sticker.text}
 				style={{width: props.sticker.w, height: props.sticker.h}}
-				onMouseUp={getStickerSize}
-			>
+				onMouseUp={getStickerSize}>
 			</textarea>
 		</span>
 		</CSSTransition>
 	)
 }
-
-
