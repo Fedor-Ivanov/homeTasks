@@ -10,6 +10,7 @@ function Stickers() {
 		JSON.parse(localStorage.getItem('stickersStorage')) ? JSON.parse(localStorage.getItem('stickersStorage')) : []
 	);
 
+
 	const createSticker = () => {
 		setStickers([
 			...stickers,
@@ -21,6 +22,7 @@ function Stickers() {
 			}
 		])
 	}
+
 
 	const deleteSticker = (id) => {
 		const newStickers = stickers.filter((item) => {
@@ -36,7 +38,6 @@ function Stickers() {
 
 
 	const onStickerValueChange = (data, id) => {
-
 		const editedStickers = stickers.map(element => {
 			if( stickersIds.includes(id) ) {
 				if (element.id === id) {
@@ -48,8 +49,8 @@ function Stickers() {
 		setStickers([...stickers],{...editedStickers})
 	}
 
-	const onStickerSizeChange = (item, id) => {
 
+	const onStickerSizeChange = (item, id) => {
 		const changedSizeStickers = stickers.map(element => {	
 			if( stickersIds.includes(id) ) {
 				if (element.id === id) {
@@ -60,29 +61,24 @@ function Stickers() {
 			}
 		})
 		setStickers([...stickers],{...changedSizeStickers})
+	}
 
+
+	const onStickerPositionChange = (item, id) => {
+		const changedPositionStickers = stickers.map(element => {	
+			if( stickersIds.includes(id) ) {
+				if (element.id === id) {
+					element.x = item.x;
+					element.y = item.y;
+				}
+			return element;
+			}
+		})
+		setStickers([...stickers],{...changedPositionStickers})
 	}
 
 	
-	// useEffect(() => {
-	// 	function draggingSticker(e) {
-			
-	// 		setStickers(
-	// 			[...stickers],
-	// 			{
-	// 				x: e.x,
-	// 				y: e.y
-	// 			}
-	// 		)
-	// 	}
 
-	// 	document.addEventListener('dragover', draggingSticker);
-
-	// 	return () => {
-	// 		document.removeEventListener('dragover', draggingSticker);
-	// 	}
-
-	// },[]);
 
 	useEffect(() => {
 		localStorage.setItem("stickersStorage", JSON.stringify(stickers));
@@ -98,6 +94,7 @@ function Stickers() {
 				deleteSticker={deleteSticker}
 				onStickerValueChange={onStickerValueChange}
 				onStickerSizeChange={onStickerSizeChange}
+				onStickerPositionChange={onStickerPositionChange}
 			/>
 		</div>
 	)

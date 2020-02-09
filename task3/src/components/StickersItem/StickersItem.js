@@ -22,28 +22,56 @@ export default function StickersItem(props) {
 		if(e.target.offsetWidth || e.targetoffsetHeight ) {
 			props.onStickerSizeChange(e.target, props.sticker.id)
 		}
-		
 	}
+
+	let prevPosition = { x: 0, y: 0 };
+
+	function getStickerStyle() {
+		const { x, y } = props.sticker;
+		return {
+			...stickerStyle,
+			top: y,
+			left: x
+		};
+	}
+
+	function startDrag(e) {
+		prevPosition = {
+			x: e.clientX,
+			y: e.clientY
+		};
+		document.addEventListener('mousemove', drag);
+		document.addEventListener('mouseup', stopDrag);
+	}
+
+	function stopDrag(e) {
+		document.removeEventListener('mousemove', drag);
+		document.removeEventListener('mouseup', stopDrag);
+	}
+
+	function drag(e) {
+		const { x, y } = props.sticker;
+
+		props.onStickerPositionChange({
+			x: x + (e.clientX - prevPosition.x),
+			y: y + (e.clientY - prevPosition.y)
+		}, props.sticker.id);
+	}
+
+
 
 
 	return (
 		<CSSTransition in={true} enter={true} exit={true} appear={true} timeout={{ enter: 500,exit: 1500 }} classNames="example" >
 		<span className="stickers__item"
-			draggable="true"
 			ref={textareaRef}
-			// style={{
-			// 	position: "absolute",
-			// 	top: props.sticker.y,
-			// 	left: props.sticker.x
-			// }}
-			>
-			<div className="stickers__button_wrap">
+			style={getStickerStyle()}>
+			<div className="stickers__button_wrap" onMouseDown={startDrag}>
 				<button
-				className="stickers__button"
-				onClick={onDeleteButtonClick}>
+					className="stickers__button"
+					onClick={onDeleteButtonClick}>
 				</button>
 			</div>
-			
 			<textarea
 				className="stickers__textarea"
 				placeholder='type some note'
@@ -56,3 +84,7 @@ export default function StickersItem(props) {
 		</CSSTransition>
 	)
 }
+
+const stickerStyle = {
+	position: 'absolute',
+};

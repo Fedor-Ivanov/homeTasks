@@ -37,6 +37,7 @@
 .stickers__button_wrap {
 	background-color: #1ab7e9;
 	border-radius: 5px 5px 0px 0px;
+	cursor: grab;
 }
 
 .stickers__button {
