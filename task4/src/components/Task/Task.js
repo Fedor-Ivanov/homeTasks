@@ -1,12 +1,14 @@
 import React from 'react'
 
-function Task({ task, onDelete }) {
+function Task({ task, onDelete, onToggleTask, onEdit }) {
+
 
 	return (
-		<div style={taskStyle}>
+		<li style={taskStyle} onClick={() => onToggleTask(task.id)}>
 			<span>{task.title}</span>
+			<button onClick={() => onEdit(task.id)}>edit</button>
 			<button onClick={() => onDelete(task.id)}>delete</button>
-		</div>
+		</li>
 	)
 }
 

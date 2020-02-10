@@ -2,7 +2,7 @@ import React from 'react'
 import ModalForm from '../ModalForm/ModalForm';
 
 
-function Modal({ tasks, onClose, show, onSave, onChange }) {
+function Modal({ task, onClose, show, onSave, onNewTaskChange }) {
 
 	if(!show) {
 		return null;
@@ -13,11 +13,10 @@ function Modal({ tasks, onClose, show, onSave, onChange }) {
 			<div style={modalStyle}>
 				<button style={{float: "right"}} onClick={onClose}>Close</button>
 				<ModalForm
-					task={tasks}
+					task={task}
 					closeModal={onClose}
 					onSave={onSave}
-					onChange={onChange}
-					// addNewTask={onSaveTaks}
+					onNewTaskChange={onNewTaskChange}
 				/>
 			</div>
 		</div>
