@@ -1,20 +1,24 @@
 import React from 'react'
+import ModalForm from '../ModalForm/ModalForm';
 
-function Modal({ onClose, show}) {
+
+function Modal({ tasks, onClose, show, onSave, onChange }) {
 
 	if(!show) {
 		return null;
-	  }
+	}
 
 	return (
 		<div style={backdropStyle}>
 			<div style={modalStyle}>
-				<div style={modalBodyStyle}>
-					lorem
-				</div>
-				<div style={modalFooterStyle}>
-					<button onClick={onClose}>Close</button>
-				</div>
+				<button style={{float: "right"}} onClick={onClose}>Close</button>
+				<ModalForm
+					task={tasks}
+					closeModal={onClose}
+					onSave={onSave}
+					onChange={onChange}
+					// addNewTask={onSaveTaks}
+				/>
 			</div>
 		</div>
 	)
@@ -39,12 +43,6 @@ const modalStyle = {
 	padding: 30
 };
 
-const modalBodyStyle = {
-	color: "red"
-}
 
-const modalFooterStyle = {
-	backgroundColor: "yellow"
-}
 
 export default Modal

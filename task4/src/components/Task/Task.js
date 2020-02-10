@@ -2,10 +2,6 @@ import React from 'react'
 
 function Task({ task, onDelete }) {
 
-	const onDeleteButtonClick = (e) => {
-		onDelete(e.target.id);
-	}
-
 	return (
 		<div style={taskStyle}>
 			<span>{task.title}</span>
