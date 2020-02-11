@@ -11,7 +11,7 @@ function Modal({ task, onClose, show, onSave, onNewTaskChange }) {
 	return (
 		<div style={backdropStyle}>
 			<div style={modalStyle}>
-				<button style={{float: "right"}} onClick={onClose}>Close</button>
+				
 				<ModalForm
 					task={task}
 					closeModal={onClose}

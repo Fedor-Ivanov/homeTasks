@@ -50,23 +50,18 @@ function App() {
 
 
 // local version
-		// const toggleTask = tasks.map(item => {
-		// 	return item.id !== task.id ? item : {
-		// 		...item,
-		// 		isDone: !item.isDone
-		// 	}
-		// });
+		const toggleTask = tasks.map(item => {
+			return item.id === task.id ? item : {
+				...item,
+				isDone: !item.isDone
+			}
+		});
 
-		// setTasks(toggleTask);
+		// setTasks();
 
 
-		console.log(task);
-		api.put(task.isDone, task).then(resp => {
-			
-			setTasks(
-				tasks.map(item => (item.isDone === resp.data.isDone ? resp.data : item))
-			)
-		})
+		console.log(toggleTask);
+		// api.post('', task).then(resp => setTasks([...toggleTask, resp.data]))
 	
 	}
 

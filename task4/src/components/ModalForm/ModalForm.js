@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ModalForm({task, closeModal, onSave, onNewTaskChange, taskTitle}) {
+function ModalForm({task, closeModal, onSave, onNewTaskChange}) {
 
 
 	const onValueChange = (e) => {
@@ -15,6 +15,12 @@ function ModalForm({task, closeModal, onSave, onNewTaskChange, taskTitle}) {
 		closeModal();
 	}
 
+	const onModalClose = () => {
+		task.title = '';
+		// task.id = '';
+		closeModal();
+	}
+
 	return (
 		<form onSubmit={onFormSubmit} style={{marginTop: "20px"}}>
 			<input type="text"
@@ -24,7 +30,7 @@ function ModalForm({task, closeModal, onSave, onNewTaskChange, taskTitle}) {
 				placeholder="type some task...">
 			</input>
 		
-			<button onClick={closeModal}>Cancel</button>
+			<button onClick={onModalClose}>Cancel</button>
 			<button type="submit">Save</button>
 			
 		</form>
