@@ -51,7 +51,7 @@ function App() {
 
 // local version
 		const toggleTask = tasks.map(item => {
-			return item.id === task.id ? item : {
+			return item.id !== task.id ? item : {
 				...item,
 				isDone: !item.isDone
 			}
@@ -61,7 +61,7 @@ function App() {
 
 
 		console.log(toggleTask);
-		// api.post('', task).then(resp => setTasks([...toggleTask, resp.data]))
+		api.post('', task).then(resp => setTasks([...toggleTask, resp.data]))
 	
 	}
 

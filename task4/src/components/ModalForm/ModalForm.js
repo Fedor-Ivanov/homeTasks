@@ -17,7 +17,7 @@ function ModalForm({task, closeModal, onSave, onNewTaskChange}) {
 
 	const onModalClose = () => {
 		task.title = '';
-		// task.id = '';
+		task.id = '';
 		closeModal();
 	}
 
