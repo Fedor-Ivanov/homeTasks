@@ -46,34 +46,28 @@ function App() {
 	}
 
 
-	const onToggleTask = (id) => {
-		
-
-	
-		const toggleTask = tasks.map(item => {
-			return item.id !== id ? item : {
-				...item,
-				isDone: !item.isDone
-			}
-		});
+	const onToggleTask = (task) => {
 
 
-		// api.put(task.id, task).then(resp => {
-		// 	setTasks(
-		// 		tasks.map(item => (item.id === resp.data.id ? resp.data : item))
-		// 	);
-		
-		setTasks(toggleTask);
-
-
-		// api.put(task.id, task).then(resp => {
-		// 	setTasks(
-		// 		tasks.map(item => ( item.id === resp.data.id ? resp.data : {...item,isDone: !item.isDone}))
-		// 	);
+// local version
+		// const toggleTask = tasks.map(item => {
+		// 	return item.id !== task.id ? item : {
+		// 		...item,
+		// 		isDone: !item.isDone
+		// 	}
 		// });
 
+		// setTasks(toggleTask);
 
 
+		console.log(task);
+		api.put(task.isDone, task).then(resp => {
+			
+			setTasks(
+				tasks.map(item => (item.isDone === resp.data.isDone ? resp.data : item))
+			)
+		})
+	
 	}
 
 
@@ -137,3 +131,26 @@ function App() {
 }
 
 export default App
+
+
+		// const toggleTask = tasks.map(item => {
+		// 	return item.id !== task.id ? item : {
+		// 		...item,
+		// 		isDone: !item.isDone
+		// 	}
+		// });
+
+
+		// api.put(task.id, task).then(resp => {
+		// 	setTasks(
+		// 		tasks.map(item => (item.id === resp.data.id ? resp.data : item))
+		// 	);
+		
+		// setTasks(toggleTask);
+
+
+		// api.put(task.id, task).then(resp => {
+		// 	setTasks(
+		// 		tasks.map(item => ( item.id === resp.data.id ? resp.data : {...item,isDone: !item.isDone}))
+		// 	);
+		// });
