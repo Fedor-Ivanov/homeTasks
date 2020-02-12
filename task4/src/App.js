@@ -47,22 +47,11 @@ function App() {
 
 
 	const onToggleTask = (task) => {
-
-
-// local version
-		const toggleTask = tasks.map(item => {
-			return item.id !== task.id ? item : {
-				...item,
-				isDone: !item.isDone
-			}
+		api.put(task.id, {'isDone': !task.isDone}).then(resp => {
+			setTasks(
+				tasks.map(item => (item.id === resp.data.id ? resp.data : item))
+			);
 		});
-
-		// setTasks();
-
-
-		console.log(toggleTask);
-		api.post('', task).then(resp => setTasks([...toggleTask, resp.data]))
-	
 	}
 
 
