@@ -24,6 +24,10 @@ function App() {
 		setModal({
 			isOpen: !modal.isOpen
 		});
+		setNewTask({
+			id: '',
+			title: ''
+		})
 	}
 
 

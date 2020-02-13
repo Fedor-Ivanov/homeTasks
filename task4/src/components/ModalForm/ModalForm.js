@@ -12,11 +12,13 @@ function ModalForm({task, closeModal, onSave, onNewTaskChange}) {
 
 	const onFormSubmit = (e) => {
 		e.preventDefault();
+		
 		onSave(task);
 		closeModal();
 		// task.title = '';
 		// task.id = '';
 	}
+
 
 	const onModalClose = () => {
 		task.title = '';
