@@ -1,9 +1,10 @@
 import React from 'react'
 import Task from '../Task/Task'
+import './TasksList.css'
 
 function TasksList({tasks, onTaskDelete, onToggleTask, onEditTask}) {
 	return (
-		<ul style={tasksListStyle}>
+		<ul className="tasksListStyle">
 			{tasks.map(task => (
 				<Task
 					task={task}
@@ -17,8 +18,5 @@ function TasksList({tasks, onTaskDelete, onToggleTask, onEditTask}) {
 	)
 }
 
-const tasksListStyle = {
-	margin: "10px 50px"
-}
 
 export default TasksList

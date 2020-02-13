@@ -2,6 +2,7 @@ import React from 'react'
 import ModalForm from '../ModalForm/ModalForm';
 
 
+
 function Modal({ task, onClose, show, onSave, onNewTaskChange }) {
 
 	if(!show) {
@@ -37,9 +38,10 @@ const modalStyle = {
 	backgroundColor: '#fff',
 	borderRadius: 5,
 	maxWidth: 500,
-	minHeight: 300,
+	minHeight: 185,
 	margin: '0 auto',
-	padding: 30
+	padding: 30,
+	display: "flex",
 };
 
 

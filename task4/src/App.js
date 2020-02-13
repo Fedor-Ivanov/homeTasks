@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './normalize.css'
+import './App.css'
 import api from './services/api';
 import Modal from './components/Modal/Modal';
 import TasksList from './components/TasksList/TasksList';
@@ -56,6 +57,7 @@ function App() {
 
 
 	const onSaveTask = (task) => {
+		
 		if (task.id) {
 			updateTask(task);
 		} else {
@@ -86,17 +88,11 @@ function App() {
 
 
 	return (
-		<div>
-			<button
-				onClick={toggleModal}
-			>
-				add user(open modal)
+		<div style={{backgroundImage: 'linear-gradient(to right top, #a3a6aa, #babbbf, #d1d1d4, #e8e8e9, #ffffff)'}}>
+			<button onClick={toggleModal} className="newTask">
+				add task
 			</button>
-			<button
-				onClick={() => console.log(tasks)}
-			>
-				tasks
-			</button>
+			
 			<Modal
 				task={newTask}
 				show={modal.isOpen}
@@ -115,26 +111,3 @@ function App() {
 }
 
 export default App
-
-
-		// const toggleTask = tasks.map(item => {
-		// 	return item.id !== task.id ? item : {
-		// 		...item,
-		// 		isDone: !item.isDone
-		// 	}
-		// });
-
-
-		// api.put(task.id, task).then(resp => {
-		// 	setTasks(
-		// 		tasks.map(item => (item.id === resp.data.id ? resp.data : item))
-		// 	);
-		
-		// setTasks(toggleTask);
-
-
-		// api.put(task.id, task).then(resp => {
-		// 	setTasks(
-		// 		tasks.map(item => ( item.id === resp.data.id ? resp.data : {...item,isDone: !item.isDone}))
-		// 	);
-		// });
