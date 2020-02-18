@@ -7,7 +7,6 @@ import TasksList from './components/TasksList/TasksList';
 
 function App() {
 
-
 	const [modal, setModal] = useState({
 		isOpen: false
 	});
