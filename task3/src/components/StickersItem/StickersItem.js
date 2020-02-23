@@ -20,7 +20,7 @@ export default function StickersItem(props) {
 
 	const getStickerSize = (e) => {
 		if(e.target.offsetWidth || e.targetoffsetHeight ) {
-			props.onStickerSizeChange(e.target, props.sticker.id)
+			props.onStickerSizeChange({w: e.target.offsetWidth, h: e.target.offsetHeight}, props.sticker.id)
 		}
 	}
 

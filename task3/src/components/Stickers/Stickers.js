@@ -51,30 +51,20 @@ function Stickers() {
 
 
 	const onStickerSizeChange = (item, id) => {
-		const changedSizeStickers = stickers.map(element => {	
-			if( stickersIds.includes(id) ) {
-				if (element.id === id) {
-					element.w = item.style.width;
-					element.h = item.style.height;
-				}
-			return element;
-			}
+		const changedSizeStickers = stickers.map(element => {
+			
+			return element.id !== id ? element : {...element, ...item};
 		})
-		setStickers([...stickers],{...changedSizeStickers})
+		setStickers(changedSizeStickers)
 	}
 
 
 	const onStickerPositionChange = (item, id) => {
 		const changedPositionStickers = stickers.map(element => {	
-			if( stickersIds.includes(id) ) {
-				if (element.id === id) {
-					element.x = item.x;
-					element.y = item.y;
-				}
-			return element;
-			}
+			return element.id !== id ? element : {...element, ...item};
+
 		})
-		setStickers([...stickers],{...changedPositionStickers})
+		setStickers(changedPositionStickers)
 	}
 
 	
