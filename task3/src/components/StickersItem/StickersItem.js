@@ -14,8 +14,7 @@ export default function StickersItem(props) {
 	}
 
 	const onTextAreaChange = (e) => {
-		props.onStickerValueChange(e.target.value, props.sticker.id)
-		
+		props.onStickerValueChange({text: e.target.value}, props.sticker.id)
 	}
 
 	const getStickerSize = (e) => {

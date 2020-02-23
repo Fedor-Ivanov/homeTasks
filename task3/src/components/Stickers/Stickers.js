@@ -39,20 +39,14 @@ function Stickers() {
 
 	const onStickerValueChange = (data, id) => {
 		const editedStickers = stickers.map(element => {
-			if( stickersIds.includes(id) ) {
-				if (element.id === id) {
-					element.text = data;
-				}
-			return element;
-			}
+			return element.id !== id ? element : {...element, ...data};
 		})
-		setStickers([...stickers],{...editedStickers})
+		setStickers(editedStickers)
 	}
 
 
 	const onStickerSizeChange = (item, id) => {
 		const changedSizeStickers = stickers.map(element => {
-			
 			return element.id !== id ? element : {...element, ...item};
 		})
 		setStickers(changedSizeStickers)
@@ -62,13 +56,10 @@ function Stickers() {
 	const onStickerPositionChange = (item, id) => {
 		const changedPositionStickers = stickers.map(element => {	
 			return element.id !== id ? element : {...element, ...item};
-
 		})
 		setStickers(changedPositionStickers)
 	}
-
 	
-
 
 	useEffect(() => {
 		localStorage.setItem("stickersStorage", JSON.stringify(stickers));
