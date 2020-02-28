@@ -6,12 +6,11 @@ function Todos({todoList, modal, toggleModal}) {
 
     return (
         <div>
-            todoList - {todoList}
+            <div>todoList - {todoList}</div>
         
             <button onClick={toggleModal}>show modal</button>
-            <button onClick={() => console.log(modal)}>modal value</button>
 
-        <Modal />
+        <Modal modal={modal} toggleModal={toggleModal}/>
         </div>
     )
 }
