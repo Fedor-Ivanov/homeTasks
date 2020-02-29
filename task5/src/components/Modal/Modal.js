@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalForm from '../ModalForm/ModalForm';
 
-function Modal({ modal, toggleModal }) {
+function Modal({ modal, newTodo, toggleModal, createTodo, onValueChange, updateTodos }) {
 
     if(!modal) {
         return null;
@@ -11,7 +11,7 @@ function Modal({ modal, toggleModal }) {
         <div style={backdropStyle}>
 			<div style={modalStyle}>
 				
-				<ModalForm toggleModal={toggleModal}/>
+				<ModalForm newTodo={newTodo} onValueChange={onValueChange} createTodo={createTodo} toggleModal={toggleModal} updateTodos={updateTodos}/>
 			</div>
 		</div>
     )

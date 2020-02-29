@@ -2,23 +2,33 @@ import React from 'react'
 import './ModalForm.css'
 
 
-function ModalForm({ toggleModal }) {
+function ModalForm({ toggleModal, onValueChange, updateTodos, createTodo, newTodo }) {
 
+    console.log(newTodo);
 
-	
-    // const closeModal = (e) => {
-    //     e.PreventDefault;
-    //     toggleModal();
-    // }
+    const onNewTaskChange = (e) => {
+		onValueChange({
+			[e.target.name]: e.target.value
+		});
+	}
+    
+    const onFormSubmit = (e) => {
+        e.PreventDefault();
+        createTodo({
+            id: Date.now(),
+            text: newTodo.text,
+        });
+    }
 
 
 	return (
         <form 
-            // onSubmit={onFormSubmit} 
+            onSubmit={onFormSubmit} 
             className="formStyle">
 			<input type="text"
 				name="title"
-				
+                value={newTodo.text}
+                onChange={onNewTaskChange}
 				placeholder="type some task..."
 				className="formInput">
 			</input>
