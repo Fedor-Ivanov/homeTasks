@@ -1,15 +1,33 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import store from './store'
-import Todos from './components/Todos/TodosWrapper'
+import React from 'react';
+import './normalize.css'
+import './App.css'
+import Modal from './components/Modal/Modal';
+import TasksList from './components/TasksList/TasksList';
+import { connect } from 'react-redux';
+import { openModal } from './store/actions';
 
+function App({ openModal, modalVisible }) {
 
-function App() {
-  return (
-    <Provider store={store}>
-      <Todos />
-    </Provider>
-  )
+	return (
+		<div>
+			<button onClick={() => openModal()} className="newTask">
+				add task
+			</button>
+			
+			<TasksList />
+            {modalVisible ? <Modal /> : null}
+		</div>
+	)
 }
 
-export default App
+function mapStateToProps(state) {
+    return {
+        modalVisible: !!state.formItem
+    };
+}
+
+const mapDispatchToProps = {
+    openModal: openModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

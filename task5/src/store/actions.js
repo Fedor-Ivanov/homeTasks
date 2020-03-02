@@ -1,19 +1,46 @@
-export const TOGGLE_MODAL_ACTION = 'TOGGLE_MODAL';
-export function toggleModal() {
-    return { type: TOGGLE_MODAL_ACTION };
+export const ACTION_DELETE = 'ACTION_DELETE';
+export function deleteTask(id) {
+    return {
+        type: ACTION_DELETE,
+        payload: id
+    };
 }
 
-export const UPDATE_TODOS_ACTION = 'UPDATE_TODOS';
-export function updateTodos(data) {
-    return { type: UPDATE_TODOS_ACTION, update: data };
+export const ACTION_TOGGLE = 'ACTION_TOGGLE';
+export function toggleTask(id) {
+    return {
+        type: ACTION_TOGGLE,
+        payload: id
+    };
 }
 
-export const CREATE_TODO_ACTION = 'CREATE_TODO';
-export function createTodo(todo) {
-    return { type: CREATE_TODO_ACTION, newTodo: todo }
+export const ACTION_OPEN_MODAL = 'ACTION_OPEN_MODAL';
+export function openModal(id) {
+    return {
+        type: ACTION_OPEN_MODAL,
+        payload: id
+    };
 }
 
-export const CHANGE_VALUE_ACTION = 'CHANGE_VALUE';
-export function onValueChange(value) {
-    return { type: CHANGE_VALUE_ACTION, value }
+export const ACTION_CLOSE_MODAL = 'ACTION_CLOSE_MODAL';
+export function closeModal() {
+    return {
+        type: ACTION_CLOSE_MODAL
+    };
+}
+
+export const ACTION_CHANGE_FORM_ITEM = 'ACTION_CHANGE_FORM_ITEM';
+export function changeFormItem(changes) {
+    return {
+        type: ACTION_CHANGE_FORM_ITEM,
+        payload: changes
+    };
+}
+
+export const ACTION_SAVE_FORM_ITEM = 'ACTION_SAVE_FORM_ITEM';
+export function saveFormItem(changes) {
+    return {
+        type: ACTION_SAVE_FORM_ITEM,
+        payload: changes
+    };
 }

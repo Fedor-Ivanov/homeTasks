@@ -2,46 +2,46 @@ import React from 'react'
 import './ModalForm.css'
 
 
-function ModalForm({ toggleModal, onValueChange, updateTodos, createTodo, newTodo }) {
+function ModalForm({task, closeModal, onSave, onChange}) {
 
-    console.log(newTodo);
-
-    const onNewTaskChange = (e) => {
-		onValueChange({
-			[e.target.name]: e.target.value
-		});
-	}
-    
-    const onFormSubmit = (e) => {
-        e.PreventDefault();
-        createTodo({
-            id: Date.now(),
-            text: newTodo.text,
-        });
+	function onValueChange(e) {
+        const changes = {
+            title: e.target.value
+        };
+        onChange(changes);
     }
 
+	const onFormSubmit = (e) => {
+		e.preventDefault();
+		
+		onSave(task);
+		closeModal();
+	}
+
+	const onModalClose = () => {
+		task.title = '';
+		task.id = '';
+		closeModal();
+	}
 
 	return (
-        <form 
-            onSubmit={onFormSubmit} 
-            className="formStyle">
+		<form onSubmit={onFormSubmit} className="formStyle">
 			<input type="text"
 				name="title"
-                value={newTodo.text}
-                onChange={onNewTaskChange}
+				value={task.title}
+				onChange={onValueChange}
 				placeholder="type some task..."
 				className="formInput">
 			</input>
 		
 			<div className="formButtonsWrap">
-				<button className="formButton cancel" onClick={toggleModal}>Cancel</button>
+				<button className="formButton cancel" onClick={onModalClose}>Cancel</button>
 				<button className="formButton save" type="submit">Save</button>
 			</div>
 			
 		</form>
 	)
 }
-
 
 const modalBodyStyle = {
 	color: "red"

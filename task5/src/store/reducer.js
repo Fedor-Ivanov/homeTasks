@@ -1,35 +1,77 @@
-import { TOGGLE_MODAL_ACTION, UPDATE_TODOS_ACTION, CREATE_TODO_ACTION } from './actions';
-
+import {
+    ACTION_DELETE,
+    ACTION_TOGGLE,
+    ACTION_OPEN_MODAL,
+    ACTION_CLOSE_MODAL,
+    ACTION_CHANGE_FORM_ITEM,
+    ACTION_SAVE_FORM_ITEM
+} from './actions';
 
 const initialState = {
-    modal: false,
-    todoList: [
-        {id: 1, text: 'hello', isDone: false},
-        {id: 2, text: 'ky', isDone: false},
-    ],
-    todo: {
-        id: '',
-        text: '',
-        isDone: false
-    }
+    tasks: [{ id: '1', title: 'lorem', isDone: false }, { id: '2', title: 'ipsum', isDone: true }],
+    formItem: null
 };
 
+function getEmptyItem() {
+    return { title: 'type some task', isDone: false };
+}
 
+function updateTodo(tasks, todo) {
+    return tasks.map(item => (item.id === todo.id ? todo : item));
+}
 
-export default function(state = initialState, action) {
-    switch (action.type) {
-        
-        case TOGGLE_MODAL_ACTION:
-            return { ...state, modal: !state.modal};
+function createTodo(tasks, todo) {
+    todo.id = Date.now();
+    return [...tasks, todo];
+}
 
-        case UPDATE_TODOS_ACTION:
-            return { ...state, todoList: state.todoList };
+export default function(state = initialState, { type, payload }) {
+    switch (type) {
+        case ACTION_DELETE:
+            return {
+                ...state,
+                tasks: state.tasks.filter(item => item.id !== payload)
+            };
+        case ACTION_TOGGLE:
+            return {
+                ...state,
+                tasks: state.tasks.map(item =>
+                    item.id !== payload
+                        ? item
+                        : { ...item, isDone: !item.isDone }
+                )
+            };
 
-        case CREATE_TODO_ACTION:
-            return { ...state, todoList: action.newTodo }
+        case ACTION_OPEN_MODAL:
+            return {
+                ...state,
+                formItem: payload
+                    ? state.tasks.find(item => item.id === payload)
+                    : getEmptyItem()
+            };
+
+        case ACTION_CLOSE_MODAL:
+            return {
+                ...state,
+                formItem: null
+            };
+
+        case ACTION_CHANGE_FORM_ITEM:
+            return {
+                ...state,
+                formItem: { ...state.formItem, ...payload }
+            };
+
+        case ACTION_SAVE_FORM_ITEM:
+            return {
+                ...state,
+                tasks: payload.id
+                    ? updateTodo(state.tasks, payload)
+                    : createTodo(state.tasks, payload),
+                formItem: null
+            };
 
         default:
             return state;
-
     }
 }

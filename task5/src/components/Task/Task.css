@@ -1,0 +1,7 @@
+.edit-button:hover {
+    background-color: orange;
+}
+
+.delete-button:hover {
+    background-color: crimson;
+}

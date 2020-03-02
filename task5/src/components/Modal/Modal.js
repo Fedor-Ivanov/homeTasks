@@ -1,20 +1,24 @@
 import React from 'react'
 import ModalForm from '../ModalForm/ModalForm';
+import { connect } from 'react-redux';
+import { closeModal, changeFormItem, saveFormItem } from '../../store/actions';
 
-function Modal({ modal, newTodo, toggleModal, createTodo, onValueChange, updateTodos }) {
 
-    if(!modal) {
-        return null;
-    }
+function Modal({ task, onClose, onSave, onChange }) {
 
-    return (
-        <div style={backdropStyle}>
+	return (
+		<div style={backdropStyle}>
 			<div style={modalStyle}>
 				
-				<ModalForm newTodo={newTodo} onValueChange={onValueChange} createTodo={createTodo} toggleModal={toggleModal} updateTodos={updateTodos}/>
+				<ModalForm
+					task={task}
+					closeModal={onClose}
+					onSave={onSave}
+					onChange={onChange}
+				/>
 			</div>
 		</div>
-    )
+	)
 }
 
 const backdropStyle = {
@@ -38,4 +42,17 @@ const modalStyle = {
 };
 
 
-export default Modal
+
+function mapStateToProps(state) {
+    return {
+        task: state.formItem
+    };
+}
+
+const mapDispatchToProps = {
+    onClose: closeModal,
+    onChange: changeFormItem,
+    onSave: saveFormItem
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
