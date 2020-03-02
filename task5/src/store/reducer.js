@@ -1,10 +1,6 @@
 import {
-    ACTION_DELETE,
-    ACTION_TOGGLE,
-    ACTION_OPEN_MODAL,
-    ACTION_CLOSE_MODAL,
-    ACTION_CHANGE_FORM_ITEM,
-    ACTION_SAVE_FORM_ITEM
+    ACTION_DELETE, ACTION_TOGGLE, ACTION_OPEN_MODAL,
+    ACTION_CLOSE_MODAL, ACTION_CHANGE_FORM_ITEM, ACTION_SAVE_FORM_ITEM
 } from './actions';
 
 const initialState = {
@@ -13,19 +9,19 @@ const initialState = {
 };
 
 function getEmptyItem() {
-    return { title: 'type some task', isDone: false };
+    return { title: '', isDone: false };
 }
 
-function updateTodo(tasks, todo) {
-    return tasks.map(item => (item.id === todo.id ? todo : item));
+function updateTask(tasks, task) {
+    return tasks.map(item => (item.id === task.id ? task : item));
 }
 
-function createTodo(tasks, todo) {
-    todo.id = Date.now();
-    return [...tasks, todo];
+function createTask(tasks, task) {
+    task.id = Date.now();
+    return [...tasks, task];
 }
 
-export default function(state = initialState, { type, payload }) {
+export default function (state = initialState, { type, payload }) {
     switch (type) {
         case ACTION_DELETE:
             return {
@@ -66,8 +62,8 @@ export default function(state = initialState, { type, payload }) {
             return {
                 ...state,
                 tasks: payload.id
-                    ? updateTodo(state.tasks, payload)
-                    : createTodo(state.tasks, payload),
+                    ? updateTask(state.tasks, payload)
+                    : createTask(state.tasks, payload),
                 formItem: null
             };
 
