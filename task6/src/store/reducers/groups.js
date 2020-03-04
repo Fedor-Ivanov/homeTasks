@@ -1,4 +1,4 @@
-import {  } from '../actions/groups';
+import { ACTION_GROUP_SELECT } from '../actions/groups';
 
 
 const initialState = {
@@ -19,12 +19,21 @@ const initialState = {
             id: 4,
             title: 'Hufflepuff'
         }
-    ]
+    ],
+    selectedGroup: ''
 };
 
 
 export default function(state = initialState, {type, payload}) {
     switch (type) {
+
+        case ACTION_GROUP_SELECT:
+
+            return {
+                ...state,
+                selectedGroup: payload
+            };
+
         default:
             return state;
     }
