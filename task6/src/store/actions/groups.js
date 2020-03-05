@@ -5,3 +5,11 @@ export function selectGroup(value) {
         payload: value
     };
 }
+
+export const ACTION_GROUP_SAVE = 'ACTION_GROUP_SAVE';
+export function saveGroup(value) {
+    return {
+        type: ACTION_GROUP_SAVE,
+        payload: value
+    };
+}

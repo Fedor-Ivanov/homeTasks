@@ -1,4 +1,4 @@
-import { ACTION_GROUP_SELECT } from '../actions/groups';
+import { ACTION_GROUP_SELECT, ACTION_GROUP_SAVE } from '../actions/groups';
 
 
 const initialState = {
@@ -23,6 +23,13 @@ const initialState = {
     selectedGroup: ''
 };
 
+function updateGroup(groups, data) {
+    return groups.map(item => (item.id == data.id ? data : item));
+}
+
+function createGroup() {
+    console.log(123);
+}
 
 export default function(state = initialState, {type, payload}) {
     switch (type) {
@@ -33,6 +40,13 @@ export default function(state = initialState, {type, payload}) {
                 ...state,
                 selectedGroup: payload
             };
+
+        case ACTION_GROUP_SAVE:
+
+            return {
+                ...state,
+                groups: payload.id ? updateGroup(state.groups, payload) : createGroup(state.groups, payload)
+            }
 
         default:
             return state;

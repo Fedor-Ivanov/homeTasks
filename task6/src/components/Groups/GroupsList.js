@@ -1,24 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Group from '../Group/Group';
+import { useRouteMatch, Link } from 'react-router-dom';
+
 
 
 function GroupsList( { groups }) {
+
+    const { url } = useRouteMatch();
+
     return (
         <ul>
             {groups.map(group => (
-                <Group
-                    key={group.id}
-                    group={group}
-                />
+                <li
+                    key={group.id}>
+                    <Link to={`${url}/${group.id}`}>{group.title}</Link>
+                </li>
             ))}
         </ul>
     )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({groups}) {
 	return {
-		groups: state.groups.groups
+		groups: groups.groups
 	};
 }
 

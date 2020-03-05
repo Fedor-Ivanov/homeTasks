@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Student from '../Student/Student';
 import { selectGroup } from '../../store/actions/groups'
 import { useRouteMatch, Link } from 'react-router-dom';
 
 
-function StudentsList({ students, groups, onSelect }) {
+function StudentsList({ students, groups, onSelect, selected }) {
     const { url } = useRouteMatch();
 
     return (
-        <>
-            <select onChange={({ target }) => onSelect(target.value)}>
+        <div>
+            <select value={selected} onChange={({ target }) => onSelect(target.value)}>
                 <option value='' >All</option>
                 <option value="1">Gryffindor</option>
                 <option value="2">Slytherin</option>
@@ -25,7 +24,7 @@ function StudentsList({ students, groups, onSelect }) {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 
