@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 function StudentsForm({ item }) {
 
     return (
-        <form>
+        <form className='edit-form'>
             <input type='text' value={ item.name } />
             <input type='text' value={ item.surname } />
             <select value={item.groupId} >

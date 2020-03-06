@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import groups from './groups';
+import houses from './houses';
 import students from './students';
 
 export default combineReducers({
-    groups: groups,
+    houses: houses,
     students: students
 });

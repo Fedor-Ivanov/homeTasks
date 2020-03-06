@@ -1,6 +1,7 @@
 import React from 'react';
+import './App.css'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
-import Groups from './components/Groups/Groups';
+import Houses from './components/Houses/Houses';
 import Students from './components/Students/Students';
 
 
@@ -10,13 +11,13 @@ function App() {
 		<Router>
 			<div className='nagivation'>
 				<Link style={{padding: '20px'}} to='/'>Home</Link>
-				<Link style={{padding: '20px'}} to='/groups'>Groups</Link>
+				<Link style={{padding: '20px'}} to='/houses'>Houses</Link>
 				<Link style={{padding: '20px'}} to='/students'>Students</Link>
 			</div>
 			<div className='content'>
 				<Switch>
-					<Route path="/groups">
-						<Groups />
+					<Route path="/houses">
+						<Houses />
 					</Route>
 					<Route path="/students">
 						<Students />

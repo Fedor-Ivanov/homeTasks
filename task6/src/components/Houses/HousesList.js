@@ -4,25 +4,25 @@ import { useRouteMatch, Link } from 'react-router-dom';
 
 
 
-function GroupsList( { groups }) {
+function HousesList( { houses }) {
 
     const { url } = useRouteMatch();
 
     return (
         <ul>
-            {groups.map(group => (
+            {houses.map(house => (
                 <li
-                    key={group.id}>
-                    <Link to={`${url}/${group.id}`}>{group.title}</Link>
+                    key={house.id}>
+                    <Link to={`${url}/${house.id}`}>{house.title}</Link>
                 </li>
             ))}
         </ul>
     )
 }
 
-function mapStateToProps({groups}) {
+function mapStateToProps({houses}) {
 	return {
-		groups: groups.groups
+		houses: houses.houses
 	};
 }
 
@@ -30,4 +30,4 @@ const mapDispatchToProps = {
 	
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GroupsList)
+export default connect(mapStateToProps, mapDispatchToProps)(HousesList)

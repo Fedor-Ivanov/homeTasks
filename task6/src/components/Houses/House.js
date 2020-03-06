@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Group({ group }) {
+function House({ house }) {
     return (
         <li>
-            {group.title}
+            {house.title}
         </li>
     )
 }
 
-export default Group
+export default House

@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectGroup } from '../../store/actions/groups'
+import { selectHouse } from '../../store/actions/houses'
 import { useRouteMatch, Link } from 'react-router-dom';
 
 
-function StudentsList({ students, groups, onSelect, selected }) {
+function StudentsList({ students, houses, onSelect, selected }) {
     const { url } = useRouteMatch();
+
+    
 
     return (
         <div>
@@ -19,7 +21,7 @@ function StudentsList({ students, groups, onSelect, selected }) {
             <ul>
                 {students.map(student => (
                     <li key={student.id}
-                        group={groups.filter((group) => { return group.id === student.groupId })}>
+                        house={houses.filter((house) => { return house.id === student.groupId })}>
                         <Link to={`${url}/${student.id}`}>{student.name} {student.surname} </Link>
                     </li>
                 ))}
@@ -28,19 +30,19 @@ function StudentsList({ students, groups, onSelect, selected }) {
     )
 }
 
-function mapStateToProps({ students, groups }) {
+function mapStateToProps({ students, houses }) {
 
     return {
         students:
-            groups.selectedGroup == '' ? students.students : students.students.filter(item => item.groupId == groups.selectedGroup),
-        groups: groups.groups,
-        selected: groups.selectedGroup
+            houses.selectedHouse == '' ? students.students : students.students.filter(item => item.groupId == houses.selectedHouse),
+        houses: houses.houses,
+        selected: houses.selectedHouse
     };
 }
 
 const mapDispatchToProps = {
 
-    onSelect: selectGroup
+    onSelect: selectHouse
 
 };
 
