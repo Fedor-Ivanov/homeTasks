@@ -46,8 +46,9 @@ function updateStudent(students, data) {
     return students.map(item => (item.id == data.id ? data : item));
 }
 
-function createStudent() {
-    console.log(123);
+function createStudent(students, student) {
+    student.id = Date.now();
+    return [...students, student]
 }
 
 export default function(state = initialState, {type, payload}) {

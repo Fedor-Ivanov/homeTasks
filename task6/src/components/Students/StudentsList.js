@@ -7,6 +7,8 @@ import { useRouteMatch, Link } from 'react-router-dom';
 function StudentsList({ students, houses, onSelect, selected }) {
     const { url } = useRouteMatch();
 
+    console.log(students);
+
     return (
         <div>
             <select value={selected} onChange={({ target }) => onSelect(target.value)}>

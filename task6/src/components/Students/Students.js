@@ -1,16 +1,17 @@
 import React from 'react'
 import StudentsList from './StudentsList'
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 import StudentsForm from './StudentsForm';
+
 
 
 function Students() {
 
-    const { path } = useRouteMatch();
+    const { path, url } = useRouteMatch();
 
     return (
         <div>
-            
+            <Link to={`${url}/new`}>Add</Link>
             <Switch>
                 <Route exact path={`${path}/`}>
                     <StudentsList />

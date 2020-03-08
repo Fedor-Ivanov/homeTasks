@@ -27,8 +27,9 @@ function updateHouse(houses, data) {
     return houses.map(item => (item.id == data.id ? data : item));
 }
 
-function createHouse() {
-    console.log(123);
+function createHouse(houses, house) {
+    house.id = Date.now();
+    return [...houses, house]
 }
 
 export default function(state = initialState, {type, payload}) {
