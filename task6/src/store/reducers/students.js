@@ -1,4 +1,4 @@
-import {  } from '../actions/students';
+import { ACTION_STUDENT_SAVE, ACTION_STUDENT_DELETE } from '../actions/students';
 
 
 const initialState = {
@@ -42,11 +42,30 @@ const initialState = {
     ]
 };
 
+function updateStudent(students, data) {
+    return students.map(item => (item.id == data.id ? data : item));
+}
+
+function createStudent() {
+    console.log(123);
+}
 
 export default function(state = initialState, {type, payload}) {
     switch (type) {
 
-        
+        case ACTION_STUDENT_SAVE:
+
+            return {
+                ...state,
+                students: payload.id ? updateStudent(state.students, payload) : createStudent(state.students, payload)
+            };
+
+        case ACTION_STUDENT_DELETE:
+
+            return {
+                ...state,
+                students: state.students.filter(item => item.id !== payload)
+            };
 
         default:
             return state;

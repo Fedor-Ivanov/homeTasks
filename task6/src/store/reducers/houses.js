@@ -1,4 +1,4 @@
-import { ACTION_HOUSE_SELECT, ACTION_HOUSE_SAVE, ACTION_HOUSE_CHANGE } from '../actions/houses';
+import { ACTION_HOUSE_SELECT, ACTION_HOUSE_SAVE, ACTION_HOUSE_DELETE } from '../actions/houses';
 
 
 const initialState = {
@@ -48,16 +48,12 @@ export default function(state = initialState, {type, payload}) {
                 houses: payload.id ? updateHouse(state.houses, payload) : createHouse(state.houses, payload)
             };
 
-        case ACTION_HOUSE_CHANGE:
-
-            // console.log(state.houses);
-            console.log(payload);
-
+        case ACTION_HOUSE_DELETE:
 
             return {
                 ...state,
-                // houses: state.houses.find(item => payload.id)
-            }
+                houses: state.houses.filter(item => item.id !== payload)
+            };
 
         default:
             return state;

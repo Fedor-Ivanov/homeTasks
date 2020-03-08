@@ -7,16 +7,15 @@ import { useRouteMatch, Link } from 'react-router-dom';
 function StudentsList({ students, houses, onSelect, selected }) {
     const { url } = useRouteMatch();
 
-    
-
     return (
         <div>
             <select value={selected} onChange={({ target }) => onSelect(target.value)}>
                 <option value='' >All</option>
-                <option value="1">Gryffindor</option>
-                <option value="2">Slytherin</option>
-                <option value="3">Ravenclaw</option>
-                <option value="4">Hufflepuff</option>
+
+                {houses.map(house => {
+                    return <option key={house.id} value={house.id} >{house.title}</option>
+                })}
+
             </select>
             <ul>
                 {students.map(student => (

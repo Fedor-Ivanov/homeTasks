@@ -1,37 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { saveHouse, changeHouse } from '../../store/actions/houses'
+import { saveHouse, deleteHouse } from '../../store/actions/houses'
+import { useHistory } from 'react-router-dom';
 
 
 
-function HouseForm({ item, onSave, onChange }) {
+function HouseForm({ item, onSave, onDelete }) {
 
+    const [title, setTitle] = useState(item.title);
 
-    const onFormSubmit = (e) => {
-        
-        const changes = {
-            title: e.target.value
-        }
-        
-        onSave(changes)
+    const history = useHistory();
+
+    function onFormSubmit(e) {
+        e.preventDefault();
+        onSave({
+            id: item.id,
+            title
+        });
+        history.push('/houses');
     }
 
-    const onInputChange = (e) => {
-
-        const changes = {
-            title: e.target.value
-        }
-
-        onChange(changes)
-
-        console.log(changes)
+    function onDeleteClick(e) {
+        e.preventDefault();
+        onDelete(
+            item.id
+        )
+        history.push('/houses');
     }
     
     return (
-        <form className='edit-form' onSubmit={onFormSubmit}>
-            <input type='text' onChange={onInputChange} value={item.title} />
-            <button>save</button>
-            <button>delete</button>
+        <form onSubmit={onFormSubmit} className='edit-form'>
+            <input type='text' onChange={({target}) => setTitle(target.value)} value={title} />
+            <button >save</button>
+            <button onClick={onDeleteClick}>delete</button>
+            <button onClick={() => history.push('/houses')}>go back</button>
         </form>
     )
 }
@@ -46,7 +48,7 @@ function mapStateToProps({ houses }, { id }) {
 
 const mapDispatchToprops = {
     onSave: saveHouse,
-    onChange: changeHouse
+    onDelete: deleteHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToprops)(HouseForm);

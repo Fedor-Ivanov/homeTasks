@@ -14,10 +14,10 @@ export function saveHouse(value) {
     };
 }
 
-export const ACTION_HOUSE_CHANGE = 'ACTION_HOUSE_CHANGE';
-export function changeHouse(value) {
+export const ACTION_HOUSE_DELETE = 'ACTION_HOUSE_DELETE';
+export function deleteHouse(id) {
     return {
-        type: ACTION_HOUSE_CHANGE,
-        payload: value
+        type: ACTION_HOUSE_DELETE,
+        payload: id
     };
 }
