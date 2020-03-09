@@ -40,9 +40,11 @@ function StudentsForm({ item, houses, onSave, onDelete }) {
                     return <option key={house.id} value={house.id} >{house.title}</option>
                 })}
             </select>
-            <button >save</button>
-            <button onClick={onDeleteClick}>delete</button>
-            <button onClick={() => history.push('/students')}>go back</button>
+            <div className='form__button_wrap'>
+                <button className='form__button' >save</button>
+                <button className='form__button' onClick={onDeleteClick}>delete</button>
+                <button className='form__button' onClick={() => history.push('/students')}>back</button>
+            </div>
         </form>
     )
 }

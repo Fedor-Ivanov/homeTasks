@@ -1,5 +1,14 @@
+html {
+  color: #000;
+}
+
 body {
-  background-color: cadetblue;
+  background-color: #fff;
+  transition: 0.6s;
+}
+
+a {
+  color: #000
 }
 
 .nagivation {
@@ -8,14 +17,112 @@ body {
   justify-content: space-around;
 }
 
+.nagivation a {
+  transition: 0.2s;
+}
+
+.nagivation a:hover {
+  transform: scale(1.2);
+}
+
 .content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.add-button_wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.add-button {
+  background-color: #000;
+  color: #fff;
+  font-weight: 900;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.add-button:hover {
+  transform: scale(1.2);
+}
+
+.students select{
+  margin-top: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #efefef;
+  font-size: 20px;
+}
+
+.edit-form select{
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #efefef;
+  font-size: 20px;
+}
+
+.students ul {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.houses ul {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.houses li + li {
+  margin-top: 10px;
+}
+
+.students li + li {
+  margin-top: 10px;
 }
 
 .edit-form {
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
+}
 
+.form__button_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__button {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #efefef;
+  font-size: 20px;
+}
+
+.edit-form input {
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  border-bottom: 2px solid #000;
 }

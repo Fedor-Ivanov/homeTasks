@@ -11,7 +11,9 @@ function Students() {
 
     return (
         <div>
-            <Link to={`${url}/new`}>Add</Link>
+            <div className='add-button_wrap'>
+                <Link className='add-button' to={`${url}/new`}>add</Link>
+            </div>
             <Switch>
                 <Route exact path={`${path}/`}>
                     <StudentsList />

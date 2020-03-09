@@ -7,11 +7,26 @@ import { useRouteMatch, Link } from 'react-router-dom';
 function StudentsList({ students, houses, onSelect, selected }) {
     const { url } = useRouteMatch();
 
-    console.log(students);
+    
+
+    function setHouseColor(value) {
+        switch(value) {
+            case "1":
+                return ( document.body.style.backgroundColor = '#d2382b' );
+            case "2":
+                return ( document.body.style.backgroundColor = '#105c43' );
+            case "3":
+                return ( document.body.style.backgroundColor = '#578ece' );
+            case "4":
+                return ( document.body.style.backgroundColor = '#ffd14e' );
+            default:
+                return ( document.body.style.backgroundColor = '#fff' );
+        }
+    }
 
     return (
-        <div>
-            <select value={selected} onChange={({ target }) => onSelect(target.value)}>
+        <div className='students'>
+            <select value={selected} onChange={({ target }) => onSelect(target.value) && setHouseColor(target.value)}>
                 <option value='' >All</option>
 
                 {houses.map(house => {

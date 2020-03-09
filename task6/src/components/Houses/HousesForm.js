@@ -31,9 +31,11 @@ function HouseForm({ item, onSave, onDelete }) {
     return (
         <form onSubmit={onFormSubmit} className='edit-form'>
             <input type='text' onChange={({target}) => setTitle(target.value)} value={title} />
-            <button >save</button>
-            <button onClick={onDeleteClick}>delete</button>
-            <button onClick={() => history.push('/houses')}>go back</button>
+            <div className='form__button_wrap'>
+                <button className='form__button' >save</button>
+                <button className='form__button' onClick={onDeleteClick}>delete</button>
+                <button className='form__button' onClick={() => history.push('/houses')}>back</button>
+            </div>
         </form>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css'
+import './normalize.css'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import Houses from './components/Houses/Houses';
 import Students from './components/Students/Students';
@@ -23,7 +24,7 @@ function App() {
 						<Students />
 					</Route>
 					<Route path="/">
-						<p>welcome to Hogwarts</p>
+						<h1 className='center'>welcome to Hogwarts</h1>
 					</Route>
 				</Switch>
 			</div>

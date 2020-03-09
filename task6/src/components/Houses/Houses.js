@@ -9,20 +9,22 @@ function Houses() {
     const { path, url } = useRouteMatch();
 
     return (
-        <>
-        <Link to={`${url}/new`}>Add</Link>
-        <Switch>
-            <Route exact path={`${path}/`}>
-                <HousesList />
-            </Route>
-            <Route
-                path={`${path}/:id`}
-                render={route => {
-                    return <HousesForm id={route.match.params.id} />;
-                }}
-            ></Route>
-        </Switch>
-        </>
+        <div>
+            <div className='add-button_wrap'>
+                <Link className='add-button' to={`${url}/new`}>add</Link>
+            </div>
+            <Switch>
+                <Route exact path={`${path}/`}>
+                    <HousesList />
+                </Route>
+                <Route
+                    path={`${path}/:id`}
+                    render={route => {
+                        return <HousesForm id={route.match.params.id} />;
+                    }}
+                ></Route>
+            </Switch>
+        </div>
     )
 }
 
