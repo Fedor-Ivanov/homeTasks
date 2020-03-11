@@ -3,8 +3,10 @@ import './App.css'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Tables from './components/tables/Tables/Tables'
 import Waiters from './components/Waiters/Waiters'
+import TablesForm from './components/tables/TablesForm/TablesForm'
 
 function App() {
+
 	return (
 		<>
 			<div>

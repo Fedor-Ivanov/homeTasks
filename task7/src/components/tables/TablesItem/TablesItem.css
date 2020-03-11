@@ -1,0 +1,19 @@
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item_info {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item_buttons {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
