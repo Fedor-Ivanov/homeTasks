@@ -3,19 +3,11 @@ import './App.css'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Tables from './components/tables/Tables/Tables'
 import Waiters from './components/Waiters/Waiters'
-import TablesForm from './components/tables/TablesForm/TablesForm'
 
 function App() {
 
 	return (
 		<>
-			<div>
-				<p>redux</p>
-				<p>react-redux</p>
-				<p>react-router-dom</p>
-				<p>axios</p>
-				<p>redux-thunk</p>
-			</div>
 			<Router>
 				<div className='nagivation'>
 					<Link style={{ padding: '20px' }} to='/'>Home</Link>

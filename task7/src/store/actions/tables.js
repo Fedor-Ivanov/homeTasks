@@ -21,3 +21,11 @@ export function deleteTable(id) {
         payload: id
     };
 }
+
+export const ACTION_LOADING_TABLE = 'ACTION_LOADING_TABLE';
+export function loadingTable(isLoading) {
+    return {
+        type: ACTION_LOADING_TABLE,
+        payload: isLoading
+    };
+}

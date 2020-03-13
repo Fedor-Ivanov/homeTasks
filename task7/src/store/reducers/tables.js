@@ -1,18 +1,29 @@
-import { ACTION_GET_TABLES, ACTION_SAVE_TABLE, ACTION_DELETE_TABLE } from '../actions/tables'
+import { ACTION_GET_TABLES, ACTION_SAVE_TABLE, ACTION_DELETE_TABLE, ACTION_LOADING_TABLE } from '../actions/tables'
 import apiTables from '../../services/apiTables'
 
 
 const initialState = {
-    list: []
+    list: [],
+    isLoading: false
 }
 
-function updateTable(list, data) {
-    return list.map(item => (item.id == data.id ? data : item));
+
+function updateTable(list, table) {
+    apiTables.put(table.id, table).then(resp => {
+        return list.map(item => (item.id === resp.table.id ? resp.table : item))
+    });
 }
 
 function createTable(list, table) {
-    table.id = Date.now();
-    return [...list, table]
+    apiTables.post('', table).then(resp => {
+        return [...list, resp.table]
+    })
+}
+
+function deleteTable(list, id) {
+    apiTables.delete(id).then(resp => {
+        list.filter(item => item.id !== resp.data.id)
+    })
 }
 
 
@@ -37,7 +48,14 @@ export default function (state = initialState, { type, payload }) {
 
             return {
                 ...state,
-                list: state.list.filter(item => item.id !== payload)
+                list: deleteTable(state.list, payload)
+            };
+
+        case ACTION_LOADING_TABLE:
+
+            return {
+                ...state,
+                isLoading: payload
             };
 
         default:
