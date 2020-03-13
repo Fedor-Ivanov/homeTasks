@@ -11,8 +11,8 @@ function WaitersList({ delWaiter, waiters, search, onSearch }) {
     return (
         <>
             <div className='control'>
-                <input type='text' placeholder='name search' name='search' value={search} onChange={({ target }) => onSearch(target.value)}></input>
-                <Link to={`${url}/new`}>add</Link>
+                <input className='search' type='text' placeholder='name search' name='search' value={search} onChange={({ target }) => onSearch(target.value)}></input>
+                <Link className='add-button' to={`${url}/new`}>add</Link>
             </div>
             <ul className='list'>
                 {waiters.map(item => (
