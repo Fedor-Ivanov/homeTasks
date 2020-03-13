@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouteMatch, Link } from 'react-router-dom'
 
 
-function TablesItem({ id, name, description, sitsCount, delTable }) {
+function WaitersItem({ id, name, salary, startDate, delWaiter }) {
 
     const { url } = useRouteMatch();
 
@@ -10,12 +10,12 @@ function TablesItem({ id, name, description, sitsCount, delTable }) {
         <li className='list-item'>
             <span>{id}</span>
             <span>{name}</span>
-            <span>{description}</span>
-            <span>{sitsCount}</span>
+            <span>{salary}</span>
+            <span>{startDate}</span>
             <Link to={`${url}/${id}`}>edit</Link>
-            <button onClick={() => delTable(id)}>delete</button>
+            <button onClick={() => delWaiter(id)}>delete</button>
         </li>
     )
 }
 
-export default TablesItem
+export default WaitersItem

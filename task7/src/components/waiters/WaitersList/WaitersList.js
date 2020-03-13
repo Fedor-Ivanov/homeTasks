@@ -1,10 +1,10 @@
 import React from 'react'
-import TablesItem from '../TablesItem/TablesItem'
+import WaitersItem from '../WaitersItem/WaitersItem'
 import { useRouteMatch, Link } from 'react-router-dom'
 
 
 
-function TablesList({ delTable, tables, search, onSearch }) {
+function WaitersList({ delWaiter, waiters, search, onSearch }) {
 
     const { url } = useRouteMatch();
 
@@ -15,19 +15,19 @@ function TablesList({ delTable, tables, search, onSearch }) {
                 <Link to={`${url}/new`}>add</Link>
             </div>
             <ul className='list'>
-                {tables.map(item => (
-                    <TablesItem key={item.id}
+                {waiters.map(item => (
+                    <WaitersItem key={item.id}
                         id={item.id}
                         name={item.name}
-                        description={item.description}
-                        sitsCount={item.sitsCount}
-                        delTable={delTable}
+                        salary={item.salary}
+                        startDate={item.startDate}
+                        delWaiter={delWaiter}
                     >
-                    </TablesItem>
+                    </WaitersItem>
                 ))}
             </ul>
         </>
     )
 }
 
-export default TablesList
+export default WaitersList

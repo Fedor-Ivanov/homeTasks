@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { saveTables } from '../../../store/actions/tables'
+import { saveTable } from '../../../store/actions/tables'
 import { useHistory } from 'react-router-dom'
 
-function TablesForm({ item, onSave, }) {
+function TablesForm({ item, saveTable }) {
 
     const [table, setTable] = useState(item);
 
@@ -11,7 +11,7 @@ function TablesForm({ item, onSave, }) {
 
     function onFormSubmit(e) {
         e.preventDefault();
-        onSave(table);
+        saveTable(table);
         history.push('/tables');
     }
 
@@ -23,10 +23,12 @@ function TablesForm({ item, onSave, }) {
     }
 
     return (
-        <form onSubmit={onFormSubmit}>
-            <input type='text' onChange={onChange} name='name' value={table.name} />
-            <input type='text' onChange={onChange} name='description' value={table.description} />
-            <input type='text' onChange={onChange} name='sitsCount' value={table.sitsCount} />
+        <form className='form' onSubmit={onFormSubmit}>
+            <div className='form-inputs'>
+                <input type='text' placeholder='name' onChange={onChange} name='name' value={table.name} />
+                <input type='text' placeholder='description' onChange={onChange} name='description' value={table.description} />
+                <input type='text' placeholder='sitsCount' onChange={onChange} name='sitsCount' value={table.sitsCount} />
+            </div>
             <div className='form__button_wrap'>
                 <button className='form__button' >save</button>
                 <button className='form__button' onClick={() => history.push('/tables')}>back</button>
@@ -38,13 +40,13 @@ function TablesForm({ item, onSave, }) {
 function mapStateToProps({ tables }, { id }) {
 
     return {
-        item: id !== 'new' ? tables.list.find(item => item.id == id) : { name: '', description: '', sitsCount: '' },
+        item: id !== 'new' ? tables.list.find(item => item.id === id) : { name: '', description: '', sitsCount: '' },
     };
 
 }
 
 const mapDispatchToprops = {
-    onSave: saveTables,
+    saveTable: saveTable
 };
 
 export default connect(mapStateToProps, mapDispatchToprops)(TablesForm);

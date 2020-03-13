@@ -1,29 +1,25 @@
 import React, { useEffect } from 'react'
-import './Tables.css'
 import TablesList from '../TablesList/TablesList'
 import TablesForm from '../TablesForm/TablesForm'
-import { getTables, deleteTable, loadingTable } from '../../../store/actions/tables'
-import apiTables from '../../../services/apiTables'
+import { getTables, delTable, searchTable } from '../../../store/actions/tables'
 import { connect } from 'react-redux'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 
 
-function Tables({ getTables, deleteTable, tables, isLoading, loadingTable }) {
+function Tables({ tables, isLoading, getTables, delTable, onSearch, search }) {
 
 	const { path } = useRouteMatch();
 
 	useEffect(() => {
-		loadingTable(true);
-		apiTables.get('').then(resp => getTables(resp.data));
-		loadingTable(false);
+		getTables()
 	}, []);
 
 	return (
-		<div>
+		<div className='container'>
 			{isLoading ? "Loading..." :
 				<Switch>
 					<Route exact path={`${path}/`}>
-						<TablesList deleteTable={deleteTable} tables={tables} />
+						<TablesList delTable={delTable} tables={tables} search={search} onSearch={onSearch} />
 					</Route>
 					<Route
 						path={`${path}/:id`}
@@ -38,16 +34,20 @@ function Tables({ getTables, deleteTable, tables, isLoading, loadingTable }) {
 }
 
 function mapStateToProps({ tables }) {
+
+	const searchRegExp = new RegExp(tables.search, 'gi');
+
 	return {
-		tables: tables.list,
-		isLoading: tables.isLoading
+		tables: tables.list.filter(item => item.name.match(searchRegExp)),
+		isLoading: tables.isLoading,
+		search: tables.search
 	}
 }
 
 const mapDispatchToProps = {
+	delTable: delTable,
 	getTables: getTables,
-	deleteTable: deleteTable,
-	loadingTable: loadingTable
+	onSearch: searchTable
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tables)

@@ -1,8 +1,9 @@
 import React from 'react'
 import './App.css'
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
+import './normalize.css'
+import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom'
 import Tables from './components/tables/Tables/Tables'
-import Waiters from './components/Waiters/Waiters'
+import Waiters from './components/waiters/Waiters/Waiters'
 
 function App() {
 
@@ -10,9 +11,9 @@ function App() {
 		<>
 			<Router>
 				<div className='nagivation'>
-					<Link style={{ padding: '20px' }} to='/'>Home</Link>
-					<Link style={{ padding: '20px' }} to='/tables'>Tables</Link>
-					<Link style={{ padding: '20px' }} to='/waiters'>Waiters</Link>
+					<NavLink activeClassName='active-link' className='nav-link' exact to='/'>Home</NavLink>
+					<NavLink activeClassName='active-link' className='nav-link' to='/tables'>Tables</NavLink>
+					<NavLink activeClassName='active-link' className='nav-link' to='/waiters'>Waiters</NavLink>
 				</div>
 				<div className='content'>
 					<Switch>
@@ -23,7 +24,7 @@ function App() {
 							<Waiters />
 						</Route>
 						<Route path="/">
-							<h1 className='center'>welcome to your Restaurant</h1>
+							<h1 className='title'>welcome to your Restaurant Manager</h1>
 						</Route>
 					</Switch>
 				</div>
