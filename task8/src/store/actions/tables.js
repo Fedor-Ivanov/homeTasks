@@ -9,6 +9,17 @@ export function setTables(data) {
     };
 }
 
+<<<<<<< HEAD
+=======
+// export const ACTION_SAVE_TABLE = 'ACTION_SAVE_TABLE';
+// export function saveTables(table) {
+//     return {
+//         type: ACTION_SAVE_TABLE,
+//         payload: table
+//     };
+// }
+
+>>>>>>> fd1afbe28dde609def8f676f575c16615a260ec0
 export const ACTION_DELETE_TABLE = 'ACTION_DELETE_TABLE';
 export function deleteTable(id) {
     return {
