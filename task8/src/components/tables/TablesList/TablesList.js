@@ -3,10 +3,6 @@ import TablesItem from '../TablesItem/TablesItem'
 import { useRouteMatch, Link } from 'react-router-dom'
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fd1afbe28dde609def8f676f575c16615a260ec0
 function TablesList({ delTable, tables, search, onSearch }) {
 
     const { url } = useRouteMatch();
@@ -33,9 +29,5 @@ function TablesList({ delTable, tables, search, onSearch }) {
     )
 }
 
-<<<<<<< HEAD
 
 export default TablesList
-=======
-export default TablesList
->>>>>>> fd1afbe28dde609def8f676f575c16615a260ec0

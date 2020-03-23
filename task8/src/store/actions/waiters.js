@@ -9,17 +9,6 @@ export function setWaiters(data) {
     };
 }
 
-<<<<<<< HEAD
-=======
-// export const ACTION_SAVE_WAITER = 'ACTION_SAVE_WAITER';
-// export function saveWaiters(waiter) {
-//     return {
-//         type: ACTION_SAVE_WAITER,
-//         payload: waiter
-//     };
-// }
-
->>>>>>> fd1afbe28dde609def8f676f575c16615a260ec0
 export const ACTION_DELETE_WAITER = 'ACTION_DELETE_WAITER';
 export function deleteWaiter(id) {
     return {
@@ -97,11 +86,6 @@ export function saveWaiter(item) {
 export const THUNK_SEARCH_WAITER = 'THUNK_SEARCH_WAITER';
 export function queryWaiter(query) {
     return function (dispatch) {
-<<<<<<< HEAD
-=======
-
-        console.log(query);
->>>>>>> fd1afbe28dde609def8f676f575c16615a260ec0
         apiWaiters.put(query, query).then(resp => {
             dispatch(searchWaiter(resp.data));
         })
